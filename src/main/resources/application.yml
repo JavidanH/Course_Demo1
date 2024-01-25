@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/ingress
+    username: mytest
+    password: 123456
+
+  liquibase:
+    change-log: classpath:liquibase/changelog-master.yml  # Check the path and ensure it's correct

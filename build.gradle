@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.2'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot Starter for building web applications
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Lombok for reducing boilerplate code (compileOnly and annotationProcessor)
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Spring Boot Starter for testing
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Spring Boot Starter for Data JPA (Java Persistence API)
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Liquibase for database schema version control
+    implementation 'org.liquibase:liquibase-core'
+
+    // PostgreSQL JDBC driver for runtime
+    runtimeOnly 'org.postgresql:postgresql'
+}
+
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

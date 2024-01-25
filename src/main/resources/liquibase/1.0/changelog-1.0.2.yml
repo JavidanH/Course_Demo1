@@ -1,0 +1,30 @@
+databaseChangeLog:
+  -  changeSet:
+       id:  Create cards table
+       author:  Javidan Hajiyev
+       changes:
+         -  createTable:
+              tableName:  cards
+              columns:
+                -  column:
+                     name:  id
+                     type:  bigint
+                     autoIncrement:  true
+                     constraints:
+                       primaryKey:  true
+                       nullable:  false
+                -  column:
+                     name:  pan
+                     type:  numeric(16)
+                     constraints:
+                       nullable: false
+                -  column:
+                     name:  status
+                     type:  varchar(16)
+                     constraints:
+                       nullable:  false
+                -  column:
+                     name:  cardholder
+                     type:  text
+
+              remarks: Table to store information about cards
