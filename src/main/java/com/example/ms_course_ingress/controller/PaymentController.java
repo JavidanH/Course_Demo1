@@ -25,4 +25,18 @@ public class PaymentController {
     public PaymentResponse getPayment(@PathVariable Long id){
         return paymentService.getPayment(id);
     }
+
+
+    @PatchMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updatePaymentDescription(@PathVariable Long id,
+                                         @RequestParam String description){
+        paymentService.updatePaymentDescription(id, description);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletePayment(@PathVariable Long id){
+        paymentService.deletePayment(id);
+    }
 }
