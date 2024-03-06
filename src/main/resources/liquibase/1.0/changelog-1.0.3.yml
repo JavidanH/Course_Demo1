@@ -1,0 +1,30 @@
+databaseChangeLog:
+  -  changeSet:
+       id:  Create table for scheduler
+       author:  Javidan Hajiyev
+       changes:
+         -  createTable:
+              tableName:  shedlock
+              columns:
+                -  column:
+                     name:  name
+                     type:  varchar(64)
+                     autoIncrement:  true
+                     constraints:
+                       primaryKey:  true
+                       nullable:  false
+                -  column:
+                     name:  pan
+                     type:  numeric(16)
+                     constraints:
+                       nullable: false
+                -  column:
+                     name:  status
+                     type:  varchar(16)
+                     constraints:
+                       nullable:  false
+                -  column:
+                     name:  cardholder
+                     type:  text
+
+              remarks: Table to store information about cards

@@ -7,7 +7,9 @@ import com.example.ms_course_ingress.model.request.CreatePaymentRequest;
 import com.example.ms_course_ingress.model.response.PaymentResponse;
 import com.example.ms_course_ingress.service.abstraction.PaymentService;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +25,8 @@ import static java.util.stream.Collectors.toList;
 public class PaymentServiceHandler implements PaymentService {
 
     private final PaymentRepository paymentRepository;
+
+    private final AsyncService asyncService;
 
 
     @Override
@@ -60,6 +64,15 @@ public class PaymentServiceHandler implements PaymentService {
         return paymentRepository.findAll().stream()
                 .map(PAYMENT_MAPPER::buildPaymentResponse)
                 .collect(toList());
+    }
+
+    @Override
+    @SneakyThrows
+    @Async
+    public void test() {
+        log.info("Logic Start");
+        asyncService.test2();
+        log.info("Logic End");
     }
 
     private PaymentEntity fetchPaymentIfExist(Long id) {
