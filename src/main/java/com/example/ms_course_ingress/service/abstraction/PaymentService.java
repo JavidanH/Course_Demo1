@@ -16,7 +16,7 @@ public interface PaymentService {
 
     List<PaymentResponse> getPayments();
 
-    void test();
+     void test();
 
 
 }

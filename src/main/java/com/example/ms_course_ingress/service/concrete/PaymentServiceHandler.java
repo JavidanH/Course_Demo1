@@ -66,6 +66,8 @@ public class PaymentServiceHandler implements PaymentService {
                 .collect(toList());
     }
 
+
+
     @Override
     @SneakyThrows
     @Async
@@ -74,6 +76,8 @@ public class PaymentServiceHandler implements PaymentService {
         asyncService.test2();
         log.info("Logic End");
     }
+
+
 
     private PaymentEntity fetchPaymentIfExist(Long id) {
         return paymentRepository.findByIdAndStatusNot(id,DELETED)

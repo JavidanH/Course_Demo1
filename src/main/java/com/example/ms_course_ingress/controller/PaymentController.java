@@ -41,8 +41,8 @@ public class PaymentController {
     }
 
 
-    @GetMapping("/test")
-    public void test(){
-        paymentService.test();
-    }
+//    @GetMapping("/test")
+//    public void test(){
+//        paymentService.test();
+//    }
 }

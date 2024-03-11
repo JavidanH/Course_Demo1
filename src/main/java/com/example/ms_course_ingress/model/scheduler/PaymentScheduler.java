@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class CybernetScheduler {
+public class PaymentScheduler {
     private final PaymentService paymentService;
 
     @Async
-    @Scheduled(fixedDelayString = "PT1S")
+    @Scheduled(cron = "0 */2 * * * *") // her 2 deqiqeden bir run olacaq
     public void test3() {
         log.info("Schedule start");
         paymentService.test();
