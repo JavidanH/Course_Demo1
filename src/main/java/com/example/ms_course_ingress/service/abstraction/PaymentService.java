@@ -18,5 +18,7 @@ public interface PaymentService {
 
      void test();
 
+     void deleteCache();
+
 
 }
