@@ -9,6 +9,8 @@ import com.example.ms_course_ingress.service.abstraction.PaymentService;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.Cache;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +39,7 @@ public class PaymentServiceHandler implements PaymentService {
     }
 
     @Override
+    @Cacheable("payments")
     public PaymentResponse getPayment(Long id) {
         log.info("ActionLog.createPayment.start request: {}", id);
         var payment = fetchPaymentIfExist(id);
@@ -77,6 +80,9 @@ public class PaymentServiceHandler implements PaymentService {
         log.info("Logic End");
     }
 
+    @Override
+    public void deleteCache() {
+    }
 
 
     private PaymentEntity fetchPaymentIfExist(Long id) {

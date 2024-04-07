@@ -41,6 +41,11 @@ public class PaymentController {
     }
 
 
+    @DeleteMapping
+    public void deletePaymentCache(){
+        paymentService.deleteCache();
+    }
+    
 //    @GetMapping("/test")
 //    public void test(){
 //        paymentService.test();
