@@ -4,9 +4,9 @@ import com.example.ms_course_ingress.model.enums.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
-
 import static jakarta.persistence.EnumType.STRING;
+
+//import static javax.persistence.EnumType.STRING;
 
 @Getter
 @Setter
@@ -24,7 +24,7 @@ public class PaymentEntity {
     @Enumerated(STRING)
     private PaymentStatus status;
 
-    private BigDecimal amount;
+    private Integer amount;
 
     private String description;
 

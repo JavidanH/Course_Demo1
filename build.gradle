@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.2.2'
     id 'io.spring.dependency-management' version '1.1.4'
+    id 'groovy'
 }
 
 group = 'com.example'
@@ -22,26 +23,22 @@ repositories {
 }
 
 dependencies {
-    // Spring Boot Starter for building web applications
-    implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    // Lombok for reducing boilerplate code (compileOnly and annotationProcessor)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-
-    // Spring Boot Starter for testing
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-    // Spring Boot Starter for Data JPA (Java Persistence API)
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-    // Liquibase for database schema version control
     implementation 'org.liquibase:liquibase-core'
 
-    // PostgreSQL JDBC driver for runtime
     runtimeOnly 'org.postgresql:postgresql'
 
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
+
+    implementation group: 'org.apache.groovy', name: 'groovy', version: '4.0.0'
+    testImplementation group: 'org.spockframework', name: 'spock-spring', version: '2.2-M1-groovy-4.0'
+    testImplementation('io.github.benas:random-beans:3.9.0')
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 

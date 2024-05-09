@@ -7,19 +7,12 @@ import com.example.ms_course_ingress.model.request.CreatePaymentRequest;
 import com.example.ms_course_ingress.model.response.PaymentResponse;
 import com.example.ms_course_ingress.service.abstraction.PaymentService;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.annotations.Cache;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.example.ms_course_ingress.mapper.PaymentMapper.PAYMENT_MAPPER;
 import static com.example.ms_course_ingress.model.enums.PaymentStatus.DELETED;
-import static java.util.stream.Collectors.toList;
 
 @Slf4j
 @Service
@@ -28,7 +21,7 @@ public class PaymentServiceHandler implements PaymentService {
 
     private final PaymentRepository paymentRepository;
 
-    private final AsyncService asyncService;
+   // private final AsyncService asyncService;
 
 
     @Override
@@ -63,22 +56,27 @@ public class PaymentServiceHandler implements PaymentService {
     }
 
     @Override
-    public List<PaymentResponse> getPayments() {
-        return paymentRepository.findAll().stream()
-                .map(PAYMENT_MAPPER::buildPaymentResponse)
-                .collect(toList());
-    }
-
-
-
-    @Override
-    @SneakyThrows
-    @Async
     public void test() {
-        log.info("Logic Start");
-        asyncService.test2();
-        log.info("Logic End");
+
     }
+
+//    @Override
+//    public List<PaymentResponse> getPayments() {
+//        return paymentRepository.findAll().stream()
+//                .map(PAYMENT_MAPPER::buildPaymentResponse)
+//                .collect(toList());
+//    }
+
+
+
+//    @Override
+//    @SneakyThrows
+//    @Async
+//    public void test() {
+//        log.info("Logic Start");
+//        asyncService.test2();
+//        log.info("Logic End");
+//    }
 
     @Override
     public void deleteCache() {

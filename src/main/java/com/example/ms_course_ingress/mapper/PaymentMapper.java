@@ -5,6 +5,8 @@ import com.example.ms_course_ingress.model.enums.PaymentStatus;
 import com.example.ms_course_ingress.model.request.CreatePaymentRequest;
 import com.example.ms_course_ingress.model.response.PaymentResponse;
 
+import java.math.BigDecimal;
+
 public enum PaymentMapper {
 
     PAYMENT_MAPPER;
@@ -23,7 +25,7 @@ public enum PaymentMapper {
         return PaymentResponse.builder()
                 .id(payment.getId())
                 .description(payment.getDescription())
-                .amount(payment.getAmount())
+                .amount(BigDecimal.valueOf(payment.getAmount()))
                 .status(payment.getStatus())
                 .build();
     }
